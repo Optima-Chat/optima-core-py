@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "optima-core"
+version = "0.1.0"
+description = "Optima 服务核心库：可观测性、诊断端点、结构化日志、分布式追踪"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Optima Team", email = "dev@optima.shop" }
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "fastapi>=0.100.0",
+    "httpx>=0.24.0",
+]
+
+[project.optional-dependencies]
+redis = ["redis>=5.0.0"]
+postgres = ["asyncpg>=0.28.0", "sqlalchemy>=2.0.0"]
+all = [
+    "redis>=5.0.0",
+    "asyncpg>=0.28.0",
+    "sqlalchemy>=2.0.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "httpx>=0.24.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Optima-Yueliu/optima-core-py"
+Repository = "https://github.com/Optima-Yueliu/optima-core-py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["optima_core"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --cov=optima_core --cov-report=term-missing"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
