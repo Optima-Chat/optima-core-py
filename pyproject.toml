@@ -45,8 +45,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Optima-Yueliu/optima-core-py"
-Repository = "https://github.com/Optima-Yueliu/optima-core-py"
+Homepage = "https://github.com/Optima-Chat/optima-core-py"
+Repository = "https://github.com/Optima-Chat/optima-core-py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["optima_core"]
